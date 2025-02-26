@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Items</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Games</title>
 </head>
 <body>
-    
+  <h1>Games List</h1>
+  <ul>
+    <% games.forEach(game => { %>
+      <li>
+        <h2><%= game.name %></h2>
+        <p>Release Date: <%= game.release_date %></p>
+        <p>Price: <%= game.price %></p>
+        <p>Rating: <%= game.rating %></p>
+      </li>
+    <% }) %>
+  </ul>
 </body>
 </html>

@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS categories (
 );
 
 INSERT INTO categories (name) VALUES 
-    (Action), (Adventure), (Fantasy), (Open World), (Puzzle),
-    (Racing), (Shooter), (Simulation), (Sports), (Strategy);
+    ('Action'), ('Adventure'), ('Fantasy'), ('Open World'), ('Puzzle'),
+    ('Racing'), ('Shooter'), ('Simulation'), ('Sports'), ('Strategy');
 
 
 CREATE TABLE IF NOT EXISTS games (
@@ -24,17 +24,17 @@ CREATE TABLE IF NOT EXISTS games (
   rating NUMERIC
 );
 
-INSERT INTO games (name, genre, release_date, price, rating) VALUES
-  ('Game One', ARRAY['Action', 'Adventure'], '2022-01-01', 59.99, 4.5),
-  ('Game Two', ARRAY['Strategy', 'Puzzle'], '2021-05-15', 39.99, 4.2);
+INSERT INTO games (name, release_date, price, rating) VALUES
+  ('Game One', '2022-01-01', 59.99, 4.5),
+  ('Game Two', '2021-05-15', 39.99, 4.2);
 
 CREATE TABLE IF NOT EXISTS developers (
      id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(255)
-)
+);
 
 INSERT INTO developers (name) VALUES 
-(Rockstar Games),(ex2);
+('Rockstar Games'),('ex2');
 
 
 CREATE TABLE IF NOT EXISTS games_developers (

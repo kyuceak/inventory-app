@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Game</title>
+  </head>
+  <body>
+    <form action="/games/new" method="POST">
+      <label for="name">Game name:</label>
+      <input type="text" name="name" id="name" />
+
+      <label for="release_date">Release date:</label>
+      <input type="date" name="release_date" id="release_date" />
+
+      <label for="price">Price:</label>
+      <input type="number" name="price" id="price" />
+
+      <label for="rating">Rating:</label>
+      <input type="number" name="rating" id="rating" />
+
+      <button>Submit</button>
+    </form>
+  </body>
+</html>

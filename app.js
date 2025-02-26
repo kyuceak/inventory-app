@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-
+const path = require("path");
 const assetsPath = path.join(__dirname,"public");
 
 app.use(express.static(assetsPath));
@@ -12,10 +12,14 @@ app.set("view engine","ejs");
 
 
 const indexRouter = require("./routes/indexRouter");
+const gamesRouter = require("./routes/gamesRouter");
+const categoriesRouter = require("./routes/categoriesRouter");
 
+app.use(express.urlencoded({extended: true }));
 
-app.use(express.urlencoded({extended: true }))
-app.use("/",)
+app.use("/categories",categoriesRouter);
+app.use("/games",gamesRouter);
+app.use("/",indexRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {
