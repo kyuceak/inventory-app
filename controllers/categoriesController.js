@@ -1,6 +1,11 @@
 
 
 const db = require("../db/queries");
+const {body, validationResult} = require("express-validator");
+
+const validateCategory = [
+    body("name").isAlpha().withMessage()
+]
 
 
 async function getListCategories(req,res){

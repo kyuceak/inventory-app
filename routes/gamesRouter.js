@@ -2,12 +2,13 @@ const { Router } = require("express");
 
 const gamesRouter = Router();
 const gamesController = require("../controllers/gamesController");
+const { validateGame } = require('../controllers/gamesController'); // if exported separately
 
 
 
 gamesRouter.get("/", gamesController.getListGames);
 gamesRouter.get("/new", gamesController.renderAddGamePage);
-gamesRouter.post("/new", gamesController.createGame);
+gamesRouter.post("/new", validateGame,gamesController.createGame);
 
 
 
