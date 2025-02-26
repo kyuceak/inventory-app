@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Category</title>
-</head>
-<body>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <%- include("partials/nav.ejs") %>
     <form action="/categories/new" method="POST">
-        <label for="category">Category Name:</label>
-        <input type="text" name="category", id="category">
-        <button>Submit</button>
+      <label for="category">Category Name:</label>
+      <input type="text" name="category" , id="category" />
+      <button>Submit</button>
     </form>
-</body>
+  </body>
 </html>

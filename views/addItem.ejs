@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Game</title>
+    <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
+    <%- include("partials/nav.ejs") %>
     <%- include("partials/errors.ejs") %>
     <form action="/games/new" method="POST">
       <label for="name">Game name:</label>

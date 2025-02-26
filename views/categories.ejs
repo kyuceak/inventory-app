@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>categories</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+    <%- include("partials/nav.ejs") %>
     <h1>Categories List</h1>
     <ul>
         <% categories.forEach(category => { %>

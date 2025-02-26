@@ -15,7 +15,12 @@ async function getListCategories(req,res){
     res.render("categories", { categories })
 }
 
+function renderAddCategoryPage(req,res){
+    res.render("addCategory");
+}
+
 
 module.exports = {
-    getListCategories
+    getListCategories,
+    renderAddCategoryPage
 }
