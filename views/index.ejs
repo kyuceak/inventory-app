@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Market</title>
-  <!-- Link to your CSS file -->
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-    <header>
-      <%- include("partials/nav.ejs") %>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Market</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header><%- include("partials/nav.ejs") %></header>
     <main class="main-content">
       <div class="hero-container">
         <video autoplay muted loop preload="auto" playsinline>
-          <source src="/landing_page.mp4" type="video/mp4">
+          <source src="/landing_page.mp4" type="video/mp4" />
         </video>
         <div class="hero">
           <h2>Welcome to the GAMEMARK!</h2>
@@ -24,8 +22,58 @@
       </div>
     </main>
     <div class="section-2">
-      <h1>wassup</h1>
-      <!-- more content -->
+      <div class="inner-row1">
+        <img src="./category_banners/action_games.png" alt="" />
+        <div class="info-section">
+            <p>
+              Unleash your inner hero with our explosive action-packed games! Get
+              ready for heart-pounding battles, high-octane chases, and epic
+              showdowns that will leave you breathless. Dive into immersive worlds
+              where every moment bursts with adrenaline and every mission tests your
+              skills. Gear up, ignite your passion for adventure, and experience the
+              thrill of action like never before!
+            </p>
+            <div class="example-games">
+                <h4>Check out other categories:</h4>
+
+                <div class="game-grid">
+                    <img src="./category_banners/multiplayer.png" alt="">
+                    <img src="./category_banners/open_world.png" alt="">
+                    <img src="./category_banners/rpg.png"alt="">
+                    <img src="./category_banners/shooter.png" alt="">
+
+                </div>
+              
+              
+            </div>
+        </div>
+      </div>
+      <div class="inner-row1 second">
+
+  
+        
+        <div class="top-games">
+            <h1>Top Games</h1>
+            <div class="games-grid">
+                <img src="./top_game.jpg" alt="" />
+                <img src="./top_game.jpg" alt="" />
+                <img src="./top_game.jpg" alt="" />
+                <img src="./top_game.jpg" alt="" />
+                <img src="./top_game.jpg" alt="" />
+                <img src="./top_game.jpg" alt="" />
+                <img src="./top_game.jpg" alt="" />
+                <img src="./top_game.jpg" alt="" />
+                <img src="./top_game.jpg" alt="" />
+                
+
+            </div>
+         
+        </div>
+        
+        
+    
+      </div>
+      
     </div>
     <footer>
       <div class="container">
@@ -33,5 +81,4 @@
       </div>
     </footer>
   </body>
-  
 </html>
