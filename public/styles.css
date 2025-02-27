@@ -12,16 +12,18 @@ body {
   line-height: 1.6;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* ensures body covers full viewport height */
+  min-height: 100vh; 
 }
 
-/* Container for centering content */
+
 .container {
   
 }
 main {
   flex: 1;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+
 }
 
 video {
@@ -33,11 +35,14 @@ video {
   z-index: -1;
 }
 
-/* Header Styles */
+
 header {
-  background: #333;
+  background: #191919;
   color: #fff;
-  padding: 1rem 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  min-height: 100px;
+  box-sizing: border-box;
 }
 
 header h1 {
@@ -49,6 +54,7 @@ nav ul {
   display: flex;
   justify-content: center;
   list-style: none;
+  gap: 3rem;
 }
 
 nav ul li {
@@ -61,6 +67,7 @@ a {
 }
 nav ul li a {
   padding: 0.5rem 1rem;
+  box-sizing: border-box;
   transition: background 0.3s;
 }
 
@@ -70,18 +77,30 @@ nav ul li a:hover {
 }
 
 /* Hero Section Styles */
+
+.hero-container {
+    position: relative;
+    
+    height: calc(100vh - 100px);
+    overflow: hidden;
+}
+
 .hero {
   text-align: center;
   padding: 4rem 0;
   background: url("/images/game-market-banner.jpg") no-repeat center
     center/cover;
   color: #fff;
+ 
+  flex: 1;
+
 }
 
 .hero h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
+
 
 .hero p {
   font-size: 1.2rem;
@@ -90,25 +109,43 @@ nav ul li a:hover {
 
 /* Button Style */
 .btn {
-  display: inline-block;
-  background: #e8491d;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  text-decoration: none;
-  font-size: 1rem;
-  border-radius: 5px;
-  transition: background 0.3s;
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    font-size: 1.1rem;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #444444;
+    border-radius: 10px;
+    display: inline-block;
+    background-image: linear-gradient(to right, #780206 0%, #061161  51%, #780206  100%);
+
+    transition: background-position ease-in-out 0.5s,transform ease-in-out 0.3s;
 }
 
 .btn:hover {
-  background: #cf3e14;
+    background-position: right center; 
+    color: #fff;
+    text-decoration: none;
+
+  transform: scale(1.05);
 }
 
-/* Footer Styles */
 footer {
   background: #333;
   color: #fff;
   text-align: center;
   padding: 1rem 0;
-  /* margin-top: 2rem; */
+
+}
+
+
+.section2 {
+    min-height: 100vh;
+    height: 100vh;
+}
+
+.section2 h1 {
+    height: 100%;
 }
