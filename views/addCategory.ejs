@@ -8,10 +8,31 @@
   </head>
   <body>
     <%- include("partials/nav.ejs") %>
-    <form action="/categories/new" method="POST">
-      <label for="category">Category Name:</label>
-      <input type="text" name="category" , id="category" />
-      <button>Submit</button>
-    </form>
+    <div class="form-container">
+      <h1>Add Category</h1>
+      <form action="/categories/new" method="POST" enctype="multipart/form-data" class="form-style">
+      
+        <div class="input-box">
+          <label for="category">Category Name:</label>
+          <input type="text" name="category" , id="category" />
+        </div>
+
+        <div class="input-box">
+          <label for="desc">Description:</label>
+          <textarea name="desc" id="desc"></textarea>
+        </div>
+  
+        <div class="input-box">
+          <label for="photo">Category Photo:</label>
+          <input type="file" name="photo" id="photo" >
+        </div>
+        <div class="form-sub">
+          <button id="submit-cat">Submit</button>
+        </div>
+       
+      </form>
+
+    </div>
+  
   </body>
 </html>

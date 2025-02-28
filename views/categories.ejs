@@ -8,14 +8,21 @@
 </head>
 <body>
     <%- include("partials/nav.ejs") %>
-    <h1>Categories List</h1>
-    <ul>
-        <% categories.forEach(category => { %>
-          <li>
-            <h2><%= category.name %></h2>
-          
-          </li>
-        <% }) %>
-      </ul>
+    <div class="category-container">
+      <h1>Categories</h1>
+      <div class="categories-section">
+        <ul class="categories-grid">
+          <% categories.forEach(category => { %>
+            <li>
+              <h2><%= category.name %></h2>
+            
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+  
+
+    </div>
+    
 </body>
 </html>

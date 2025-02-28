@@ -4,32 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Game</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <%- include("partials/nav.ejs") %>
-    <%- include("partials/errors.ejs") %>
-    <form action="/games/new" method="POST">
-      <label for="name">Game name:</label>
-      <input type="text" name="name" id="name" />
+    <%- include("partials/nav.ejs") %> <%- include("partials/errors.ejs") %>
+    <div class="form-container">
+      <h1>Add Game</h1>
+      <form action="/games/new" method="POST" class="form-style">
+        <div class="input-box">
+          <label for="name">Game name:</label>
+          <input type="text" name="name" id="name" />
+        </div>
 
-      <div class="check-boxes">
-        <% categories.forEach((category) => {%>
+        <div class="check-boxes">
+          <% categories.forEach((category) => {%>
 
-        <input type="checkbox" name="categories" value="<%= category.id%>" />
-        <label for=""><%= category.name %></label>
-        <% }) %>
-      </div>
-      <label for="release_date">Release date:</label>
-      <input type="date" name="release_date" id="release_date" />
+            <div class="checkbox-wrapper">
+              <input
+                type="checkbox"
+                id="category-<%= category.id %>"
+                name="categories"
+                value="<%= category.id %>"
+              />
+              <label for="category-<%= category.id %>">
+                <%= category.name %>
+              </label>
+            </div>
+            
 
-      <label for="price">Price:</label>
-      <input type="number" name="price" id="price" />
+          <% }) %>
+        </div>
+        <div class="input-box">
+          <label for="release_date">Release date:</label>
+          <input type="date" name="release_date" id="release_date" />
+        </div>
+        <div class="input-box">
+          <label for="price">Price:</label>
+          <input type="text" inputmode="numeric" name="price" id="price" />
+        </div>
 
-      <label for="rating">Rating:</label>
-      <input type="number" step="any" name="rating" id="rating" />
+        <div class="input-box">
+          <label for="rating">Rating:</label>
+          <input
+            type="text"
+            inputmode="numeric"
+            step="any"
+            name="rating"
+            id="rating"
+          />
+        </div>
 
-      <button>Submit</button>
-    </form>
+        <div class="form-sub">
+          <button id="submit-cat">Submit</button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
