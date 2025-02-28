@@ -16,6 +16,9 @@
         <p>Release Date: <%= game.release_date %></p>
         <p>Price: <%= game.price %></p>
         <p>Rating: <%= game.rating %></p>
+        <% if (game.game_image) { %>
+          <img src="data:image/png;base64,<%= game.game_image.toString('base64') %>" alt="<%= game.name %>">
+        <% } %>
       </li>
     <% }) %>
   </ul>

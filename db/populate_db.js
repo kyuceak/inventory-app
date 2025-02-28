@@ -8,12 +8,12 @@ const SQL = `
 
 CREATE TABLE IF NOT EXISTS categories (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    name VARCHAR ( 255 )
+    name VARCHAR ( 255 ),
+    description VARCHAR ( 255 ),
+    category_image BYTEA
 );
 
-INSERT INTO categories (name) VALUES 
-    ('Action'), ('Adventure'), ('Fantasy'), ('Open World'), ('Puzzle'),
-    ('Racing'), ('Shooter'), ('Simulation'), ('Sports'), ('Strategy');
+
 
 
 CREATE TABLE IF NOT EXISTS games (
@@ -21,12 +21,11 @@ CREATE TABLE IF NOT EXISTS games (
   name VARCHAR ( 255 ),
   release_date DATE,
   price NUMERIC,
-  rating NUMERIC
+  rating NUMERIC,
+  game_image BYTEA
 );
 
-INSERT INTO games (name, release_date, price, rating) VALUES
-  ('Game One', '2022-01-01', 59.99, 4.5),
-  ('Game Two', '2021-05-15', 39.99, 4.2);
+
 
 CREATE TABLE IF NOT EXISTS developers (
      id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -53,6 +52,15 @@ CREATE TABLE IF NOT EXISTS games_categories(
 
 
 `;
+
+// INSERT INTO games (name, release_date, price, rating) VALUES
+//   ('Game One', '2022-01-01', 59.99, 4.5),
+//   ('Game Two', '2021-05-15', 39.99, 4.2);
+
+
+// INSERT INTO categories (name) VALUES 
+//     ('Action'), ('Adventure'), ('Fantasy'), ('Open World'), ('Puzzle'),
+//     ('Racing'), ('Shooter'), ('Simulation'), ('Sports'), ('Strategy');
 
 async function main() {
   console.log("seeding...");

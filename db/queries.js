@@ -12,8 +12,8 @@ async function getItemGames(id) {
 
 async function createGame(req) {
   const createdGame = await pool.query(
-    "INSERT INTO games (name, release_date, price, rating) VALUES ($1, $2, $3, $4) RETURNING *",
-    [req.name, req.release_date, req.price, req.rating]
+    "INSERT INTO games (name, release_date, price, rating, game_image) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+    [req.name, req.release_date, req.price, req.rating, req.game_file]
   );
   
   const gameId = createdGame.rows[0].id;
@@ -33,7 +33,9 @@ async function getListCategories() {
   return rows;
 }
 
-async function createCategory() {}
+async function createCategory(req) {
+  await pool.query("INSERT INTO categories (name,description,category_image) VALUES ($1, $2, $3)", [req.category, req.desc, req.category_file]);
+}
 
 module.exports = {
   getListGames,

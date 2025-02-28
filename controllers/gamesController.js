@@ -1,7 +1,7 @@
 
-
 const db = require("../db/queries");
 const { body, validationResult } = require("express-validator");
+const upload = require("../multerConfig");
 
 const categorySelectError = "You must select at least 1 category.";
 const nameError = "You must enter a valid game name";
@@ -37,17 +37,30 @@ async function renderAddGamePage(req,res){
 
 async function createGame(req,res){
 
-    const errors = validationResult(req);
-    if(!errors.isEmpty())
-    {   
-        const categories = await db.getListCategories();
-        return res.status(400).render("addItem",{errors: errors.array(), categories})
-    }
+    upload.single("game_file")(req, res, async (err) => {
+
+        const errors = validationResult(req);
+        if(!errors.isEmpty())
+        {   
+            const categories = await db.getListCategories();
+            return res.status(400).render("addItem",{errors: errors.array(), categories})
+        }
+    
+        
 
 
-    await db.createGame(req.body);
+        const gameData = {
+            ...req.body,
+            game_file: req.file ? req.file.filename: null
+        }
 
-    res.redirect("/games");
+        await db.createGame(gameData);
+    
+        res.redirect("/games");
+    
+
+    });
+
 
 
 }
