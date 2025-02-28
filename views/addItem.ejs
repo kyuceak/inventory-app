@@ -10,7 +10,7 @@
     <%- include("partials/nav.ejs") %> <%- include("partials/errors.ejs") %>
     <div class="form-container">
       <h1>Add Game</h1>
-      <form action="/games/new" method="POST" class="form-style">
+      <form action="/games/new" method="POST" class="form-style" enctype="multipart/form-data" >
         <div class="input-box">
           <label for="name">Game name:</label>
           <input type="text" name="name" id="name" />

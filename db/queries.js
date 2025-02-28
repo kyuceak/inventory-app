@@ -1,7 +1,14 @@
 const pool = require("./pool");
 
 async function getListGames() {
-  const { rows } = await pool.query("SELECT * FROM games");
+  const { rows } = await pool.query(`SELECT 
+    id,
+    name,
+    to_char(release_date, 'Mon DD YYYY') AS release_date,
+    price,
+    rating,
+    game_image
+    FROM games`);
   return rows;
 }
 

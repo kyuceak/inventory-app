@@ -8,14 +8,15 @@ const nameError = "You must enter a valid game name";
 
 const validateGame = [
     body("categories").customSanitizer(value => {
+        console.log(value);
         if(value == undefined || value == null){
             return [];
         }
-        // console.log(value)
+        
         return Array.isArray(value) ? value : [value];
     }),
     body("categories").custom(arr => arr.length > 0).withMessage(categorySelectError),
-    body("name").isAlpha().withMessage(nameError),
+   
 ]
 
 
@@ -37,11 +38,15 @@ async function renderAddGamePage(req,res){
 
 async function createGame(req,res){
 
-    upload.single("game_file")(req, res, async (err) => {
+     
 
+
+
+        // console.log(req.body);
         const errors = validationResult(req);
         if(!errors.isEmpty())
         {   
+          
             const categories = await db.getListCategories();
             return res.status(400).render("addItem",{errors: errors.array(), categories})
         }
@@ -53,13 +58,14 @@ async function createGame(req,res){
             ...req.body,
             game_file: req.file ? req.file.buffer: null
         }
-
+        
+     
         await db.createGame(gameData);
     
         res.redirect("/games");
     
 
-    });
+
 
 
 

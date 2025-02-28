@@ -8,19 +8,26 @@
 </head>
 <body>
     <%- include("partials/nav.ejs") %>
-  <h1>Games List</h1>
-  <ul>
-    <% games.forEach(game => { %>
-      <li>
-        <h2><%= game.name %></h2>
-        <p>Release Date: <%= game.release_date %></p>
-        <p>Price: <%= game.price %></p>
-        <p>Rating: <%= game.rating %></p>
-        <% if (game.game_image) { %>
-          <img src="data:image/png;base64,<%= game.game_image.toString('base64') %>" alt="<%= game.name %>">
-        <% } %>
-      </li>
-    <% }) %>
-  </ul>
+  <div class="category-container">
+    <h1>Games List</h1>
+    <div class="categories-grid">
+      <ul>
+        <% games.forEach(game => { %>
+          <li>
+            <div class="product-card">
+              <% if (game.game_image) { %>
+                <img src="data:image/jpg;base64,<%= game.game_image.toString('base64') %>" alt="<%= game.name %>">
+              <% } %>
+              <h2><%= game.name %></h2>
+              <p>Release Date: <%= game.release_date %></p>
+              <p>Price: <%= game.price %></p>
+              <p>Rating: <%= game.rating %></p>
+            </div>
+           
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>

@@ -34,7 +34,7 @@ async function createCategory(req,res){
             category_file: req.file ? req.file.buffer : null
         }
 
-        console.log(categoryData);
+      
 
         await db.createCategory(categoryData);
 
