@@ -11,7 +11,7 @@ const validateGame = [
         if(value == undefined || value == null){
             return [];
         }
-        console.log(value)
+        // console.log(value)
         return Array.isArray(value) ? value : [value];
     }),
     body("categories").custom(arr => arr.length > 0).withMessage(categorySelectError),
@@ -51,7 +51,7 @@ async function createGame(req,res){
 
         const gameData = {
             ...req.body,
-            game_file: req.file ? req.file.filename: null
+            game_file: req.file ? req.file.buffer: null
         }
 
         await db.createGame(gameData);

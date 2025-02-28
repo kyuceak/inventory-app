@@ -15,7 +15,10 @@
           <% categories.forEach(category => { %>
             <li>
               <h2><%= category.name %></h2>
-            
+              <%   console.log(typeof category.category_image, category.category_image);%>
+              <% if (category.category_image) { %>
+                <img src="data:image/jpg;base64,<%= category.category_image.toString('base64') %>" alt="<%= category.name %>">
+              <% } %>
             </li>
           <% }) %>
         </ul>

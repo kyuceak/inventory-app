@@ -305,8 +305,14 @@ footer {
     align-items: stretch;
     justify-content: center;
     gap: 2rem;
-    width: auto;
-    max-width: 400px;
+   width: 450px;
+  }
+
+  @media (max-width: 765px)
+  {
+    .form-style{
+      width: 100%;
+    }
   }
 
   .input-box{
@@ -322,16 +328,16 @@ footer {
     padding: 0.5rem 0.5rem;
     background-color: #333;
     border-style: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 0.5rem;
   }
 
   textarea{
     box-sizing: border-box;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     background-color: #333;
     border-style: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 0.5rem;
     height: 150px;
     resize: none;

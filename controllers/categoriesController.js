@@ -12,6 +12,7 @@ const validateCategory = [
 async function getListCategories(req,res){
 
     const categories = await db.getListCategories();
+  
 
     res.render("categories", { categories })
 }
@@ -22,9 +23,24 @@ function renderAddCategoryPage(req,res){
 
 async function createCategory(req,res){
 
-    await db.createCategory(req.body);
+    upload.single("category_file")(req, res, async (err) => {
 
-    res.render("/categories");
+        if(err){
+            return res.status(500).send(err.message);
+        }
+
+        const categoryData = {
+            ...req.body,
+            category_file: req.file ? req.file.buffer : null
+        }
+
+        console.log(categoryData);
+
+        await db.createCategory(categoryData);
+
+    res.redirect("/categories");
+    });
+    
 }
 
 

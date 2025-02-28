@@ -34,6 +34,7 @@ async function getListCategories() {
 }
 
 async function createCategory(req) {
+  // console.log(req);
   await pool.query("INSERT INTO categories (name,description,category_image) VALUES ($1, $2, $3)", [req.category, req.desc, req.category_file]);
 }
 
