@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>categories</title>
-    <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
     <%- include("partials/nav.ejs") %>
     <div class="category-container">
       <h1>Categories</h1>
       <div class="categories-section">
         <ul class="categories-grid">
           <% categories.forEach(category => { %>
-            <li>
-              <h2><%= category.name %></h2>
-              <%   console.log(typeof category.category_image, category.category_image);%>
-              <% if (category.category_image) { %>
-                <img src="data:image/jpg;base64,<%= category.category_image.toString('base64') %>" alt="<%= category.name %>">
-              <% } %>
-            </li>
+          <li>
+            <% if (category.category_image) { %>
+
+            <div class="banner">
+              <img
+                src="data:image/jpg;base64,<%= category.category_image.toString('base64') %>"
+                alt="<%= category.name %>"
+                class="banner-img"
+              />
+              <h2 class="banner-title"><%= category.name %></h2>
+            </div>
+
+            <% } %>
+          </li>
           <% }) %>
         </ul>
       </div>
-  
-
     </div>
-    
-</body>
+  </body>
 </html>
