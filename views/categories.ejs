@@ -16,7 +16,9 @@
           <li>
             <% if (category.category_image) { %>
 
+              <a href="/categories/<%= category.id %>">
             <div class="banner">
+              
               <img
                 src="data:image/jpg;base64,<%= category.category_image.toString('base64') %>"
                 alt="<%= category.name %>"
@@ -24,6 +26,7 @@
               />
               <h2 class="banner-title"><%= category.name %></h2>
             </div>
+          </a>
 
             <% } %>
           </li>

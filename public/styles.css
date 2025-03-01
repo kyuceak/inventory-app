@@ -41,6 +41,7 @@ header {
   padding-bottom: 5px;
   min-height: 62px;
   box-sizing: border-box;
+  font-size: 1.3rem;
 }
 
 header h1 {
@@ -164,7 +165,7 @@ footer {
 
 .section-2 {
   background-color: #191919;
-  min-height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
@@ -177,7 +178,7 @@ footer {
   box-sizing: border-box;
   gap: 2rem;
   align-items: center;
-  min-height: 100vh;
+  height: auto;
 }
 
 .inner-row1 p {
@@ -253,7 +254,8 @@ footer {
 .games-grid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem
+    gap: 1rem;
+   
 }
 
 
@@ -265,7 +267,7 @@ footer {
 
 
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .game-grid {
       grid-template-columns: 1fr;
     }
@@ -424,11 +426,12 @@ footer {
   .categories-grid {
     display: grid;
     
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem; 
     list-style: none;
     padding: 2rem;
     margin: 0;
+    
    
   }
   

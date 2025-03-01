@@ -43,9 +43,19 @@ async function createCategory(req,res){
     
 }
 
+async function fetchCategoryById(req,res){
+
+    const gamesByCategory = await db.getItemCategory(req.params.id);
+
+    console.log("burdayiz: ", gamesByCategory);
+
+    res.render("categoryDetail", { gamesByCategory });
+}
+
 
 module.exports = {
     getListCategories,
     renderAddCategoryPage,
-    createCategory
+    createCategory,
+    fetchCategoryById
 }

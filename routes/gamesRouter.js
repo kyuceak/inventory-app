@@ -8,6 +8,7 @@ const upload = require("../multerConfig");
 
 gamesRouter.get("/", gamesController.getListGames);
 gamesRouter.get("/new", gamesController.renderAddGamePage);
+// gamesRouter.get("/:id", gamesController)
 gamesRouter.post("/new", upload.single("game_file"),validateGame,gamesController.createGame);
 
 
