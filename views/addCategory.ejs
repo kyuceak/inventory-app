@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
-    <%- include("partials/nav.ejs") %>
+    <%- include("partials/nav.ejs") %><%- include("partials/errors.ejs") %>
     <div class="form-container">
       <h1>Add Category</h1>
       <form action="/categories/new" method="POST" enctype="multipart/form-data" class="form-style">

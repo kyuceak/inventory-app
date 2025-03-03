@@ -8,6 +8,17 @@
 </head>
 <body>
     <%- include("partials/nav.ejs") %>
+    <div class="category-container">
+        <h1><%= categoryInfo.name %> Games</h1>
+        <div class="detail-banner">
+            <img 
+            src="data:image/jpg;base64,<%= categoryInfo.category_image.toString('base64') %>"
+            alt=""
+            id="detail-img"
+            >
+            <p><%= categoryInfo.description %></p>
+        </div>
+       
     <ul class="categories-grid">
         <% gamesByCategory.forEach(game => { %>
         <li>
@@ -59,6 +70,7 @@
         </li>
         <% }) %>
       </ul>
+      </div>
     
 </body>
 </html>

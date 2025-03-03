@@ -4,8 +4,12 @@ const db = require("../db/queries");
 const {body, validationResult} = require("express-validator");
 const upload = require("../multerConfig");
 
+
+const lengthErr = "Category name must be shorter 12 characters."
+
+
 const validateCategory = [
-    body("name").isAlpha().withMessage()
+    body("name").isLength({min:3 ,max: 12}).withMessage(lengthErr)
 ]
 
 
@@ -23,10 +27,18 @@ function renderAddCategoryPage(req,res){
 
 async function createCategory(req,res){
 
-    upload.single("category_file")(req, res, async (err) => {
+    // upload.single("category_file")(req, res, async (err) => {
 
-        if(err){
-            return res.status(500).send(err.message);
+        // if(err){
+        //     return res.status(500).send(err.message);
+        // }
+
+
+        const errors = validationResult(req);
+        if(!errors.isEmpty())
+        {
+            return res.status(400).render("addCategory", {errors: errors.array()});
+            
         }
 
         const categoryData = {
@@ -39,17 +51,17 @@ async function createCategory(req,res){
         await db.createCategory(categoryData);
 
     res.redirect("/categories");
-    });
+    // });
     
 }
 
-async function fetchCategoryById(req,res){
+async function fetchGamesByCategoryId(req,res){
 
-    const gamesByCategory = await db.getItemCategory(req.params.id);
+    const gamesByCategory = await db.getListGamesByCategory(req.params.id);
 
-    console.log("burdayiz: ", gamesByCategory);
+    console.log("burdayiz: ", gamesByCategory.categoryInfo);
 
-    res.render("categoryDetail", { gamesByCategory });
+    res.render("categoryDetail", { gamesByCategory:gamesByCategory.rows, categoryInfo: gamesByCategory.categoryInfo});
 }
 
 
@@ -57,5 +69,6 @@ module.exports = {
     getListCategories,
     renderAddCategoryPage,
     createCategory,
-    fetchCategoryById
+    fetchGamesByCategoryId,
+    validateCategory
 }

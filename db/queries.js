@@ -34,13 +34,19 @@ async function createGame(req) {
 }
 
 async function getListCategories() {
+  
   const { rows } = await pool.query("SELECT * FROM categories");
 
   return rows;
 }
 
-async function getItemCategory(id) {
+async function getListGamesByCategory(id) {
   
+
+  /* additionaly fetch category info */
+
+  const categoryInfo = await pool.query("SELECT * FROM categories WHERE categories.id = $1",[id]);
+
   const { rows } = await pool.query(
     `SELECT  id,
     name,
@@ -50,7 +56,7 @@ async function getItemCategory(id) {
     game_image
     FROM games WHERE games.id IN (SELECT gc.game_id FROM games_categories AS gc WHERE gc.category_id = $1)`,[id] );
    
-  return rows;
+  return {rows, categoryInfo: categoryInfo.rows[0]};
 }
 
 async function createCategory(req) {
@@ -67,5 +73,5 @@ module.exports = {
   createGame,
   getListCategories,
   createCategory,
-  getItemCategory
+  getListGamesByCategory
 };

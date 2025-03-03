@@ -14,33 +14,19 @@ CREATE TABLE IF NOT EXISTS categories (
 );
 
 
-
-
 CREATE TABLE IF NOT EXISTS games (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name VARCHAR ( 255 ),
   release_date DATE,
   price NUMERIC,
   rating NUMERIC,
-  game_image BYTEA
+  game_image BYTEA,
+  developer VARCHAR(255)
 );
 
 
 
-CREATE TABLE IF NOT EXISTS developers (
-     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    name VARCHAR(255)
-);
 
-INSERT INTO developers (name) VALUES 
-('Rockstar Games'),('ex2');
-
-
-CREATE TABLE IF NOT EXISTS games_developers (
-    game_id INTEGER REFERENCES games(id) ON DELETE CASCADE,
-    developer_id INTEGER REFERENCES  developers(id) ON DELETE CASCADE,
-    PRIMARY KEY(game_id, developer_id)
-);
 
 
 CREATE TABLE IF NOT EXISTS games_categories(

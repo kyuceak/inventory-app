@@ -4,7 +4,7 @@ const { body, validationResult } = require("express-validator");
 const upload = require("../multerConfig");
 
 const categorySelectError = "You must select at least 1 category.";
-const nameError = "You must enter a valid game name";
+
 
 const validateGame = [
     body("categories").customSanitizer(value => {
