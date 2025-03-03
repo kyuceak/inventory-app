@@ -8,6 +8,33 @@
 </head>
 <body>
     <%- include("partials/nav.ejs") %>
-    
+    <div class="game-detail-container">
+     <div class="game-detail">
+         
+          <div class="game-banner">
+              <img src="data:image/jpg;base64,<%= game.game_image.toString('base64') %>" alt="">
+          </div>
+          <div class="game-info">
+              <h2 class="game-title"> <%= game.name %></h2>
+              <ul class="game-detail-ul">
+                  <li>
+                      Genre:
+                      <% categories.forEach((category,index) => { %>
+
+                    
+                        <span><%= category.name %> <%if(index != categories.length -1){%> <%=","%><%}%></span>
+                      <% }); %>
+                    </li>
+         
+                  <li>Release Date: <%= game.release_date %></li>
+                  <li>Developer: <%= game.developer %></li>
+              </ul>
+              <p>Rating: <%= game.rating%> </p>
+              <p>Price: $<%= game.price%></p>
+         
+          </div>
+     </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
 </body>
 </html>

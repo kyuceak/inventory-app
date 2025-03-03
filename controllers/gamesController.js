@@ -21,11 +21,7 @@ const validateGame = [
 
 
 async function getListGames(req,res){
-
-
     const games = await db.getListGames();
-
-
     res.render("item",{ games });
 }
 
@@ -37,11 +33,6 @@ async function renderAddGamePage(req,res){
 }
 
 async function createGame(req,res){
-
-     
-
-
-
         // console.log(req.body);
         const errors = validationResult(req);
         if(!errors.isEmpty())
@@ -50,28 +41,26 @@ async function createGame(req,res){
             const categories = await db.getListCategories();
             return res.status(400).render("addItem",{errors: errors.array(), categories})
         }
-    
-        
-
 
         const gameData = {
             ...req.body,
             game_file: req.file ? req.file.buffer: null
         }
         
-     
         await db.createGame(gameData);
-    
         res.redirect("/games");
-    
-
-
-
-
-
 }
 
 
+async function fetchGameByGameId(req,res){
+    const { id } = req.params;
+    console.log("my id: ", id)
+    const game = await db.getItemGames(id);
+
+    const categories = await db.getListCategoriesByGame(id);
+
+    res.render("gameDetail", { game, categories });
+}
 
 
 
@@ -79,5 +68,6 @@ module.exports = {
     getListGames,
     renderAddGamePage,
     createGame,
-    validateGame
+    validateGame,
+    fetchGameByGameId
 }

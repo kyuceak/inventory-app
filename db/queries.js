@@ -13,14 +13,23 @@ async function getListGames() {
 }
 
 async function getItemGames(id) {
-  const { rows } = pool.query("SELECT * FROM games WHERE games.id = $1", [id]);
+  const { rows } = await pool.query(`SELECT 
+    id,
+    name,
+    to_char(release_date, 'Mon DD YYYY') AS release_date,
+    price,
+    developer,
+    rating,
+    game_image
+    FROM games WHERE games.id = $1`, [id]);
+  console.log(rows);
   return rows[0];
 }
 
 async function createGame(req) {
   const createdGame = await pool.query(
-    "INSERT INTO games (name, release_date, price, rating, game_image) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-    [req.name, req.release_date, req.price, req.rating, req.game_file]
+    "INSERT INTO games (name, release_date, price, rating, game_image, developer) VALUES ($1, $2, $3, $4, $5,$6) RETURNING *",
+    [req.name, req.release_date, req.price, req.rating, req.game_file,req.developer]
   );
 
   const gameId = createdGame.rows[0].id;
@@ -59,6 +68,21 @@ async function getListGamesByCategory(id) {
   return {rows, categoryInfo: categoryInfo.rows[0]};
 }
 
+
+async function getListCategoriesByGame(id){
+  const { rows } = await pool.query(
+    `SELECT name FROM categories 
+    WHERE categories.id
+    IN
+    (SELECT category_id FROM games_categories AS gc WHERE gc.game_id = $1)`
+    , [id]
+  );
+
+
+
+  return rows
+}
+
 async function createCategory(req) {
   // console.log(req);
   await pool.query(
@@ -73,5 +97,6 @@ module.exports = {
   createGame,
   getListCategories,
   createCategory,
-  getListGamesByCategory
+  getListGamesByCategory,
+  getListCategoriesByGame
 };

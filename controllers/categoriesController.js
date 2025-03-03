@@ -9,7 +9,7 @@ const lengthErr = "Category name must be shorter 12 characters."
 
 
 const validateCategory = [
-    body("name").isLength({min:3 ,max: 12}).withMessage(lengthErr)
+    body("category").isLength({min:3 ,max: 20}).withMessage(lengthErr)
 ]
 
 
@@ -27,12 +27,7 @@ function renderAddCategoryPage(req,res){
 
 async function createCategory(req,res){
 
-    // upload.single("category_file")(req, res, async (err) => {
-
-        // if(err){
-        //     return res.status(500).send(err.message);
-        // }
-
+  
 
         const errors = validationResult(req);
         if(!errors.isEmpty())
@@ -51,7 +46,7 @@ async function createCategory(req,res){
         await db.createCategory(categoryData);
 
     res.redirect("/categories");
-    // });
+
     
 }
 
@@ -59,7 +54,7 @@ async function fetchGamesByCategoryId(req,res){
 
     const gamesByCategory = await db.getListGamesByCategory(req.params.id);
 
-    console.log("burdayiz: ", gamesByCategory.categoryInfo);
+   
 
     res.render("categoryDetail", { gamesByCategory:gamesByCategory.rows, categoryInfo: gamesByCategory.categoryInfo});
 }

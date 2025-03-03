@@ -13,6 +13,7 @@
 
       <ul class="categories-grid">
         <% games.forEach(game => { %>
+          <a href="/games/<%= game.id%>">
         <li>
           <div class="product-card">
             <% if (game.game_image) { %>
@@ -60,8 +61,10 @@
             </div>
           </div>
         </li>
+      </a>
         <% }) %>
       </ul>
     </div>
+    <%- include("partials/footer.ejs") %>
   </body>
 </html>
